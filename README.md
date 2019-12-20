@@ -27,3 +27,21 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 # helloAngularApp
+
+Commands to run node docker:
+
+Docker build
+#docker build -t angular_app --build-arg HTTP_PROXY=http://proxy-wsa.esl.cisco.com:80 --build-arg HTTPS_PROXY=http://proxy-wsa.esl.cisco.com:80 .
+docker build -t angular_app .
+
+Docker run
+docker run -it -p 84:80 -d $(docker images --filter=reference=angular_app --format "{{.ID}}")
+
+Docker tag
+docker tag -t $(docker images --filter=reference=angular_app --format "{{.ID}}") varkh16/angular_app:latest
+
+Docker login
+docker login -u varunkh16 -p N1nj@*89
+
+Docker push
+docker push varkh16/angular_app
